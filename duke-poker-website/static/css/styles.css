@@ -2,9 +2,9 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'papyrus', sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: black;
-    color: rgb(255, 255, 255);
+    color: white;
 }
 
 /* Header Styling */
@@ -54,53 +54,69 @@ header nav a:hover {
 .hero-text {
     color: white;
     text-shadow: 2px 2px 5px black;
-    margin-bottom: 10px; /* Reduce space between text and logo */
 }
 
 .hero-text .welcome {
-    font-size: 1.5rem; /* Increase font size */
+    font-size: 2rem;
     margin: 0;
     font-weight: 300;
 }
 
 .hero-text .duke-poker {
-    font-size: 5.5rem; /* Increase font size */
+    font-size: 5rem;
     margin: 0;
     font-weight: bold;
 }
 
-.hero-text .duke {
-    color: #ffffff; /* Duke Blue */
-}
-
-.hero-text .poker {
-    color: #ffffff; /* Poker Gold */
-}
-
 .hero-text .club {
-    font-size: 5rem; /* Increase font size */
+    font-size: 5rem;
     margin: 0;
     font-weight: bold;
     color: white;
 }
 
 .hero-logo {
-    width: 120px; /* Adjust logo size */
-    margin-top: 10px; /* Reduce space between text and logo */
+    width: 120px;
+    margin-top: 10px;
+}
+
+/* Section Styling */
+section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #1a1a1a;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f39c12;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Disclaimer Bar */
+.disclaimer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    z-index: 1000;
 }
 
 /* Footer Styling */
 footer {
-    display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
     text-align: center;
     padding: 10px;
-    background-color: #00009c; /* Duke Blue */
+    background-color: #00009c;
     color: white;
-    height: 50px; /* Optional: Set a fixed height for the footer */
-}
-
-footer p {
-    margin: 0; /* Remove default margin */
 }
