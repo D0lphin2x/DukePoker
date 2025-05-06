@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duke Poker Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo">
+        </div>
+        <nav>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('team') }}">Team</a>
+            <a href="{{ url_for('announcements') }}">Announcements</a>
+            <a href="{{ url_for('sponsors') }}">Sponsors</a>
+            <a href="{{ url_for('gallery') }}">Gallery</a>
+            <a href="{{ url_for('join') }}">Join Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-text">
+                <p class="welcome">WELCOME TO THE</p>
+                <h1 class="duke-poker">
+                    <span class="duke">Duke</span> <span class="poker">Poker</span>
+                </h1>
+                <h1 class="club">Club</h1>
+            </div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo" class="hero-logo">
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <p>&copy; 2025 Duke Undergraduate Poker Club.</p>
+        <div>
+    </footer>
+</body>
+</html>

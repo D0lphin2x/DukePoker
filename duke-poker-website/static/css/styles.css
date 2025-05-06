@@ -1,0 +1,106 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'papyrus', sans-serif;
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00009c;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    height: 65px;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #f39c12;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background: url('../images/hero.jpg') no-repeat center center/cover;
+    text-align: center;
+    position: relative;
+}
+
+.hero-text {
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom: 10px; /* Reduce space between text and logo */
+}
+
+.hero-text .welcome {
+    font-size: 1.5rem; /* Increase font size */
+    margin: 0;
+    font-weight: 300;
+}
+
+.hero-text .duke-poker {
+    font-size: 5.5rem; /* Increase font size */
+    margin: 0;
+    font-weight: bold;
+}
+
+.hero-text .duke {
+    color: #ffffff; /* Duke Blue */
+}
+
+.hero-text .poker {
+    color: #ffffff; /* Poker Gold */
+}
+
+.hero-text .club {
+    font-size: 5rem; /* Increase font size */
+    margin: 0;
+    font-weight: bold;
+    color: white;
+}
+
+.hero-logo {
+    width: 120px; /* Adjust logo size */
+    margin-top: 10px; /* Reduce space between text and logo */
+}
+
+/* Footer Styling */
+footer {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    text-align: center;
+    padding: 10px;
+    background-color: #00009c; /* Duke Blue */
+    color: white;
+    height: 50px; /* Optional: Set a fixed height for the footer */
+}
+
+footer p {
+    margin: 0; /* Remove default margin */
+}
