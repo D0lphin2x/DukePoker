@@ -92,7 +92,7 @@ section {
 section h2 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #f39c12;
+    color: #ffffff;
 }
 
 section p {
@@ -108,15 +108,96 @@ section p {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 0.5px 0;
     font-size: 0.9rem;
     z-index: 1000;
 }
 
-/* Footer Styling */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #00009c;
+/* Ensure the body and html take up the full height */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: black;
     color: white;
+    height: 100%; /* Full height for the body and html */
+    display: flex;
+    flex-direction: column; /* Flexbox layout for vertical alignment */
+}
+
+/* Main content should take up available space */
+main {
+    flex: 1; /* Pushes the footer to the bottom */
+}
+
+/* Disclaimer Bar */
+.disclaimer-bar {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 0.8rem;
+    z-index: 1000;
+}
+
+/* Default link styling */
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+header nav a:hover {
+    color: #f39c12;
+}
+
+/* Active tab styling */
+header nav a.active {
+    background-color: #1a1a1a; /* Slightly darkened background */
+    color: #ffffff; /* Highlighted text color */
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.5); /* Imprinted effect */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+/* Join Page Styling */
+.join-page {
+    background-color: white; /* Set the background color to white */
+    color: black; /* Ensure text is readable on a white background */
+    padding: 40px 20px;
+    text-align: center;
+    min-height: calc(100vh - 50px); /* Ensure it fills the viewport minus the disclaimer bar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better contrast */
+}
+
+/* Join Page Section Styling */
+.join-section {
+    background-color: transparent; /* Remove the black background */
+    color: black; /* Ensure text is readable on the white background */
+    margin: 40px 0; /* Add spacing between sections */
+    padding: 0; /* Remove any padding if unnecessary */
+    text-align: left; /* Optional: Align text to the left */
+    
+}
+/* Join Page Section Styling */
+.join-section {
+    background-color: transparent; /* Remove any background color */
+    color: black; /* Default text color for the section */
+    margin: 40px 0; /* Add spacing between sections */
+    padding: 0; /* Remove unnecessary padding */
+    text-align: left; /* Align text to the left */
+}
+
+.join-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black; /* Ensure headers are black */
+}
+
+.join-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: black; /* Ensure paragraph text is black */
 }
