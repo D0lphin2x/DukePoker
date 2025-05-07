@@ -1,9 +1,10 @@
+<!-- filepath: /Users/billy/Downloads/Duke/Rands/DukePoker/duke-poker-website/templates/sponsors.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsors- Duke Poker Club</title>
+    <title>Sponsors - Duke Poker Club</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
@@ -15,24 +16,31 @@
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('team') }}">Team</a>
             <a href="{{ url_for('announcements') }}">Announcements</a>
-            <a href="{{ url_for('sponsors') }}"class="active">Sponsors</a>
+            <a href="{{ url_for('sponsors') }}" class="active">Sponsors</a>
             <a href="{{ url_for('gallery') }}">Gallery</a>
             <a href="{{ url_for('join') }}">Join Us</a>
         </nav>
     </header>
 
-    <section>
-        <h2>Our Sponsors</h2>
-        <p>Learn more about our mission, history, and what makes us the best poker club at Duke University.</p>
-    </section>
+    <main class="sponsors-page">
+        <h1>Our Sponsors</h1>
+        <section class="sponsors-list">
+            {% for sponsor in sponsors %}
+            <article class="sponsor">
+                <div class="sponsor-header">
+                    <h2 class="sponsor-name">{{ sponsor.name }}</h2>
+                    <img src="{{ sponsor.logo }}" alt="{{ sponsor.name }} Logo" class="sponsor-logo">
+                </div>
+                <p class="sponsor-description">{{ sponsor.description }}</p>
+            </article>
+            <hr class="sponsor-divider">
+            {% endfor %}
+        </section>
+    </main>
 
-     <!-- Disclaimer Bar -->
-     <div class="disclaimer-bar">
-        <p> DISCLAIMER<p/>
-        <p>The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited</p>
-        <p>&copy; 2025 Duke Poker Club </p>
+    <div class="disclaimer-bar">
+        <p>DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited.</p>
+        <p>&copy; 2025 Duke Poker Club</p>
     </div>
 </body>
 </html>
-
-

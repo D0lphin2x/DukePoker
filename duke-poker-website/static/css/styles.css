@@ -84,7 +84,7 @@ header nav a:hover {
 section {
     padding: 40px 20px;
     text-align: center;
-    background-color: #1a1a1a;
+    background-color: #000000;
     margin: 20px 0;
     border-radius: 10px;
 }
@@ -165,7 +165,7 @@ header nav a.active {
 /* Join Page Styling */
 .join-page {
     background-color: white; /* Set the background color to white */
-    color: black; /* Ensure text is readable on a white background */
+    color: black; /* Ensure all text inside the page is black */
     padding: 40px 20px;
     text-align: center;
     min-height: calc(100vh - 50px); /* Ensure it fills the viewport minus the disclaimer bar */
@@ -174,17 +174,8 @@ header nav a.active {
 
 /* Join Page Section Styling */
 .join-section {
-    background-color: transparent; /* Remove the black background */
-    color: black; /* Ensure text is readable on the white background */
-    margin: 40px 0; /* Add spacing between sections */
-    padding: 0; /* Remove any padding if unnecessary */
-    text-align: left; /* Optional: Align text to the left */
-    
-}
-/* Join Page Section Styling */
-.join-section {
     background-color: transparent; /* Remove any background color */
-    color: black; /* Default text color for the section */
+    color: black; /* Ensure text is black */
     margin: 40px 0; /* Add spacing between sections */
     padding: 0; /* Remove unnecessary padding */
     text-align: left; /* Align text to the left */
@@ -201,3 +192,145 @@ header nav a.active {
     line-height: 1.6;
     color: black; /* Ensure paragraph text is black */
 }
+
+/* Announcements Page Styling */
+.announcements-page {
+    padding: 40px 20px;
+    background-color: black; /* Continuous black background */
+    color: white; /* White text for readability */
+    text-align: center;
+}
+
+.announcements-list {
+    margin-top: 20px;
+}
+
+.announcement {
+    display: flex; /* Use flexbox for layout */
+    align-items: flex-start; /* Align content at the top */
+    margin-bottom: 20px; /* Add spacing between announcements */
+    padding-bottom: 20px; /* Add padding at the bottom */
+    border-bottom: 1px solid white; /* White line to separate announcements */
+    text-align: left;
+    color: white; /* Ensure all text inside announcements is white */
+}
+
+.announcement-image {
+    width: 150px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Add spacing between the image and content */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.announcement-content {
+    flex: 1; /* Allow the content to take up remaining space */
+}
+
+.announcement h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white; /* Ensure headers are white */
+}
+
+.announcement p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: white; /* Ensure paragraph text is white */
+}
+
+/* Gallery Page Styling */
+.gallery-page {
+    padding: 40px 20px;
+    background-color: black; /* Continuous black background */
+    color: white; /* White text for readability */
+    text-align: center;
+}
+
+.gallery-list {
+    margin-top: 20px;
+}
+
+.gallery-event {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.gallery-event h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: white; /* Ensure headers are white */
+}
+
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap; /* Allow images to wrap to the next line */
+    gap: 15px; /* Add spacing between images */
+}
+
+.gallery-image {
+    width: 200px; /* Set a fixed width for images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Optional: Add a subtle shadow */
+}
+
+.gallery-divider {
+    border: 0;
+    height: 1px;
+    background: white; /* White line to separate events */
+    margin: 40px 0;
+}
+
+/* Sponsors Page Styling */
+.sponsors-page {
+    padding: 40px 20px;
+    background-color: white; /* White background for the page */
+    color: black; /* Black text for readability */
+    text-align: center;
+}
+
+.sponsors-list {
+    margin-top: 20px;
+}
+
+.sponsor {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.sponsor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sponsor-name {
+    font-size: 1.8rem;
+    color: black; /* Ensure sponsor names are black */
+}
+
+.sponsor-logo {
+    width: 100px; /* Set a fixed width for logos */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.sponsor-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: black; /* Ensure descriptions are black */
+}
+
+.sponsor-divider {
+    border: 0;
+    height: 1px;
+    background: black; /* Black line to separate sponsors */
+    margin: 40px 0;
+}
+
+.sponsors-page section {
+    background-color: white; /* Set the background color to white for the sponsor section */
+    color: black; /* Ensure text is black for readability */
+}
+

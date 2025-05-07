@@ -1,3 +1,4 @@
+<!-- filepath: /Users/billy/Downloads/Duke/Rands/DukePoker/duke-poker-website/templates/announcements.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,25 +15,35 @@
         <nav>
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('team') }}">Team</a>
-            <a href="{{ url_for('announcements') }}"class="active">Announcements</a>
+            <a href="{{ url_for('announcements') }}" class="active">Announcements</a>
             <a href="{{ url_for('sponsors') }}">Sponsors</a>
             <a href="{{ url_for('gallery') }}">Gallery</a>
             <a href="{{ url_for('join') }}">Join Us</a>
         </nav>
     </header>
 
-    <section>
-        <h2>Upcoming Events</h2>
-        <p>Weekly Poker Nights, Monthly Challenges</p>
-    </section>
+    <main class="announcements-page">
+        <h1>Announcements</h1>
+        <h2>2025-2026</h1>
+        <section class="announcements-list">
+            {% for announcement in announcements %}
+            <article class="announcement">
+                {% if announcement.image %}
+                <img src="{{ announcement.image }}" alt="{{ announcement.title }}" class="announcement-image">
+                {% endif %}
+                <div class="announcement-content">
+                    <h2>{{ announcement.title }}</h2>
+                    <p><strong>Date:</strong> {{ announcement.date }}</p>
+                    <p>{{ announcement.description }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
 
-     <!-- Disclaimer Bar -->
-     <div class="disclaimer-bar">
-        <p> DISCLAIMER<p/>
-        <p>The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited</p>
-        <p>&copy; 2025 Duke Poker Club </p>
+    <div class="disclaimer-bar">
+        <p>DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited.</p>
+        <p>&copy; 2025 Duke Poker Club</p>
     </div>
 </body>
 </html>
-
-

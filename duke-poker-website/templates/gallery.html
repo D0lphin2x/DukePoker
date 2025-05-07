@@ -1,9 +1,10 @@
+<!-- filepath: /Users/billy/Downloads/Duke/Rands/DukePoker/duke-poker-website/templates/gallery.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery- Duke Poker Club</title>
+    <title>Gallery - Duke Poker Club</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
@@ -16,23 +17,31 @@
             <a href="{{ url_for('team') }}">Team</a>
             <a href="{{ url_for('announcements') }}">Announcements</a>
             <a href="{{ url_for('sponsors') }}">Sponsors</a>
-            <a href="{{ url_for('gallery') }}"class="active">Gallery</a>
+            <a href="{{ url_for('gallery') }}" class="active">Gallery</a>
             <a href="{{ url_for('join') }}">Join Us</a>
         </nav>
     </header>
 
-    <section>
-        <h2>Gallery</h2>
-        <p>Photos</p>
-    </section>
+    <main class="gallery-page">
+        <h1>Gallery</h1>
+        <section class="gallery-list">
+            {% for event in gallery_events %}
+            <article class="gallery-event">
+                <h2>{{ event.title }}</h2>
+                <div class="gallery-images">
+                    {% for image in event.images %}
+                    <img src="{{ image }}" alt="{{ event.title }}" class="gallery-image">
+                    {% endfor %}
+                </div>
+            </article>
+            <hr class="gallery-divider">
+            {% endfor %}
+        </section>
+    </main>
 
-     <!-- Disclaimer Bar -->
-     <div class="disclaimer-bar">
-        <p> DISCLAIMER<p/>
-        <p>The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited</p>
-        <p>&copy; 2025 Duke Poker Club </p>
+    <div class="disclaimer-bar">
+        <p>DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited.</p>
+        <p>&copy; 2025 Duke Poker Club</p>
     </div>
 </body>
 </html>
-
-
