@@ -32,9 +32,9 @@ def team():
     team_members = [
         {"name": "Andrew Park", "role": "Co-President", "image": "images/andrewpark.png", "bio": "Major: Math & Computer Science 2028 Interests: Piano, College Football, Strategy games"},
         {"name": "Jason Chen", "role": "Co-President", "image": "images/jasonchen.png", "bio": "Major: Economics Interests: Options Trading, Brawl Stars, Ginger and Soy"},
-        {"name": "Jason Dong", "role": "Treasurer", "image": "images/placeholder.png", "bio": "Handles club funds and registration."},
-        {"name": "Grace Kim", "role": "Outreach", "image": "images/placeholder.png", "bio": "Manages socials and sponsor relations."},
-        {"name": "William He", "role": "Tech Director", "image": "images/placeholder.png", "bio": "Major: Music & Cultural Anthropology Interest: Food"},
+        {"name": "Jason Dong", "role": "Secretary", "image": "images/placeholder.png", "bio": "Publicity"},
+        {"name": "Grace Kim", "role": "Treasurer", "image": "images/gracekim.png", "bio": "Econ & Poli Sci Interests: Guitar, Making music, Running"},
+        {"name": "William He", "role": "Tech Director", "image": "images/slowpoke.png", "bio": "Major: Music & Cultural Anthropology Interest: Food"},
     ]
     return render_template('team.html', announcements=ANNOUNCEMENTS, team_members=team_members)
 
