@@ -17,10 +17,31 @@
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('team') }}">Team</a>
             <a href="{{ url_for('announcements') }}">Announcements</a>
-            <!--<a href="{{ url_for('sponsors') }}">Sponsors</a>
-            <a href="{{ url_for('gallery') }}">Gallery</a>-->
+            <a href="{{ url_for('sponsors') }}">Sponsors</a>
+            <a href="{{ url_for('gallery') }}">Gallery</a>
             <a href="{{ url_for('join') }}" class="active">Join Us</a>
         </nav>
+        {% if announcements and announcements|length > 0 %}
+        <button id="announcement-btn" class="announcement-button">Latest Announcement</button>
+
+        {% set a = announcements[0] %}
+        <div id="announcement-modal" class="modal" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+                <h2>{{ a.title }}</h2>
+                <p><strong>Date:</strong> {{ a.date }}</p>
+                <p>{{ a.description }}</p>
+                {% if a.link %}
+                <p><a href="{{ a.link }}" target="_blank" rel="noopener noreferrer">Sign up / RSVP here</a></p>
+                {% endif %}
+                {% if a.image %}
+                <img src="{{ url_for('static', filename=a.image.replace('static/', '')) }}" alt="{{ a.title }}" style="max-width:100%; margin-top:12px;">
+                {% endif %}
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% endif %}
     </header>
 
     <main class="join-page">
@@ -43,14 +64,13 @@
             <h2>Stay Up to Date</h2>
             <ul class="indented-list">
                 <li>Register on  <a href="https://duke.campusgroups.com/DukePoker/club_signup" target="https://duke.campusgroups.com/DukePoker/club_signup">DukeGroups</a> to join our mailing list.</li>
-                <li>Join our Discord <a href="https://discord.gg/qkb6Qj4Z" target="https://discord.gg/qkb6Qj4Z">here</a>.</li>
                 <li>Follow us on Instagram <a href="https://www.instagram.com/duke_poker/" target="https://www.instagram.com/duke_poker/">here</a>. </li>
             </ul>
         </section>
     </main>
 
     <div class="disclaimer-bar">
-        <p>DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited.</p>
+        <p>DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus.</p>
         <p>&copy; 2025 Duke Poker Club</p>
     </div>
 </body>

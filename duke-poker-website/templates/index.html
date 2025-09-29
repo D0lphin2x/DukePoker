@@ -16,10 +16,15 @@
             <a href="{{ url_for('home') }}"class="active">Home</a>
             <a href="{{ url_for('team') }}">Team</a>
             <a href="{{ url_for('announcements') }}">Announcements</a>
-            <!--<!--<a href="{{ url_for('sponsors') }}">Sponsors</a>
-            <a href="{{ url_for('gallery') }}">Gallery</a>-->
+            <a href="{{ url_for('sponsors') }}">Sponsors</a>
+            <a href="{{ url_for('gallery') }}">Gallery</a>
             <a href="{{ url_for('join') }}">Join Us</a>
         </nav>
+
+        {# Recent announcement button — shown only if ANNOUNCEMENTS passed from app.py #}
+        {% if announcements and announcements|length > 0 %}
+        <button id="announcement-btn" class="announcement-button">Latest Announcement</button>
+        {% endif %}
     </header>
 
     <main>
@@ -33,12 +38,6 @@
             </div>
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo" class="hero-logo">
         </div>
-
-        <!-- Recent Event Section -->
-        <section class="recent-event">
-            <h2>Recent Event</h2>
-            <p>Our most recent event was the Annual Duke Poker Tournament held on May 1, 2025. Stay tuned for more updates!</p>
-        </section>
 
         <!-- Opportunities Section -->
         <section class="opportunities">
@@ -56,16 +55,50 @@
         <section class="sponsors">
             <h2>Our Sponsors</h2>
             <p>We are proudly supported by our sponsors. Thank you for making our events possible!</p>
+
+            {# bottom logo strip — shows when `sponsors` is passed to the template #}
+            {% if sponsors and sponsors|length > 0 %}
+            <div class="sponsor-logos">
+                <div class="logo-grid">
+                    {% for s in sponsors %}
+                        {% if s.logo %}
+                        <div class="logo-item" title="{{ s.name }}">
+                            <img src="{{ url_for('static', filename=s.logo) }}" alt="{{ s.name }} logo">
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
         </section>
     </main>
 
     <!-- Disclaimer Bar -->
     <div class="disclaimer-bar">
-        <p> DISCLAIMER<p/>
-        <p>The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited</p>
+        <p> DISCLAIMER</p>
+        <p>The Duke Poker Club does not support any form of gambling on campus.</p>
         <p>&copy; 2025 Duke Poker Club </p>
     </div>
 
-    
+    {# Announcement modal (renders only if announcements exist) #}
+    {% if announcements and announcements|length > 0 %}
+    {% set a = announcements[0] %}
+    <div id="announcement-modal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+            <h2>{{ a.title }}</h2>
+            <p><strong>Date:</strong> {{ a.date }}</p>
+            <p>{{ a.description }}</p>
+            {% if a.link %}
+            <p><a href="{{ a.link }}" target="_blank" rel="noopener noreferrer">Sign up / RSVP here</a></p>
+            {% endif %}
+            {% if a.image %}
+            <img src="{{ url_for('static', filename=a.image.replace('static/', '')) }}" alt="{{ a.title }}" style="max-width:100%; margin-top:12px;">
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endif %}
 </body>
 </html>

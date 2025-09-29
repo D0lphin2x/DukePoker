@@ -1,18 +1,6 @@
 /* General Reset */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Times New Roman';
-    background-color: black;
-    color: white;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-
 /* Header Styling */
 header {
     display: flex;
@@ -84,6 +72,7 @@ header nav a:hover {
 .hero-logo {
     width: 120px;
     margin-top: 10px;
+    max-width: 120px; /* reduce hero logo size on desktop */
 }
 
 /* Section Styling */
@@ -123,8 +112,7 @@ section p {
 body, html {
     margin: 0;
     padding: 0;
-    /* Use Orbitron (loaded from Google Fonts in templates) with sans-serif fallback */
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: black;
     color: white;
     height: 100%; /* Full height for the body and html */
@@ -135,6 +123,7 @@ body, html {
 /* Main content should take up available space */
 main {
     flex: 1; /* Pushes the footer to the bottom */
+    padding-bottom: 110px; /* >= disclaimer height; adjust if you change disclaimer padding */
 }
 
 /* Disclaimer Bar */
@@ -145,6 +134,16 @@ main {
     padding: 3px 0;
     font-size: 0.8rem;
     z-index: 1000;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.95);
+    color: #ccc;
+    padding: 14px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    z-index: 1200; /* above content but below modals */
 }
 
 /* Default link styling */
@@ -245,6 +244,70 @@ header nav a.active {
     color: white; /* Ensure paragraph text is white */
 }
 
+/* Announcement button */
+.announcement-button {
+    background: #f39c12;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 12px;
+    align-self: center;
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: #111;
+    color: #fff;
+    max-width: 720px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+    text-align: left;
+}
+
+.modal-content img {
+    max-width: 520px;
+    width: 100%;
+    height: auto;
+}
+
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Ensure modal links are noticeable */
+.modal-content a {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
 /* Gallery Page Styling */
 .gallery-page {
     padding: 40px 20px;
@@ -275,8 +338,8 @@ header nav a.active {
 }
 
 .gallery-image {
-    width: 200px; /* Set a fixed width for images */
-    height: auto; /* Maintain aspect ratio */
+    width: 160px; /* was 200px */
+    height: auto;
     border-radius: 5px; /* Optional: Add rounded corners */
     box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Optional: Add a subtle shadow */
 }
@@ -290,54 +353,229 @@ header nav a.active {
 
 /* Sponsors Page Styling */
 .sponsors-page {
-    padding: 40px 20px;
-    background-color: white; /* White background for the page */
-    color: black; /* Black text for readability */
-    text-align: center;
+    padding: 48px 0;
+    background-color: black; /* match site background */
+    color: white;
+    text-align: left;
+    padding-bottom: 110px; /* >= disclaimer height; adjust if you change disclaimer padding */
 }
 
 .sponsors-list {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .sponsor {
-    margin-bottom: 40px;
-    text-align: left;
-}
-
-.sponsor-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.sponsor-name {
-    font-size: 1.8rem;
-    color: black; /* Ensure sponsor names are black */
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06); /* announcement-style separator */
+    background: transparent; /* ensure no white block */
 }
 
 .sponsor-logo {
-    width: 100px; /* Set a fixed width for logos */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px; /* Optional: Add rounded corners */
+    flex: 0 0 180px; /* larger real-estate for logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sponsor-logo img {
+    max-width: 120px; /* previously larger */
+    max-height: 90px;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
+.sponsor-content {
+    flex: 1;
+}
+.sponsor-name {
+    margin: 0 0 6px;
+    color: #fff;
+    font-size: 1.4rem;
+}
 .sponsor-description {
+    margin: 0;
+    color: #ddd;
+    line-height: 1.5;
     font-size: 1rem;
-    line-height: 1.6;
-    color: black; /* Ensure descriptions are black */
 }
 
-.sponsor-divider {
-    border: 0;
-    height: 1px;
-    background: black; /* Black line to separate sponsors */
-    margin: 40px 0;
+/* Sponsor logo strip (index + sponsors page) */
+.sponsor-logos {
+    margin-top: 22px;
+    padding: 18px 0 6px;
+}
+.logo-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.logo-item {
+    flex: 0 0 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: transparent; /* keep black theme */
+    border-radius: 8px;
+}
+.logo-item img {
+    max-width: 90px;
+    max-height: 48px;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: 0.95;
 }
 
-.sponsors-page section {
-    background-color: white; /* Set the background color to white for the sponsor section */
-    color: black; /* Ensure text is black for readability */
+/* Coming soon section */
+.coming-soon {
+    padding: 40px 20px;
+    color: #ddd;
+    text-align: center;
+}
+
+/* Container used on pages that need wider real-estate */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-bottom: 110px; /* >= disclaimer height; adjust if you change disclaimer padding */
+}
+
+/* Team grid: two-up square cards */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 24px;
+    align-items: start;
+}
+
+.team-card {
+    background: transparent; /* keep black theme */
+    padding: 10px;
+    text-align: center;
+    color: #ddd;
+}
+
+/* Square image handling */
+.team-photo-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* keeps square */
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+.team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 370px;
+    max-height: 370px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Placeholder if no image */
+.team-photo--placeholder {
+    font-size: 2rem;
+    color: #ccc;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Text styles */
+.team-name { color:#fff; margin: 6px 0 4px; font-size: 1.1rem; }
+.team-role { color:#bdbdbd; margin: 0 0 8px; font-size: 0.95rem; }
+.team-bio { color:#cfcfcf; font-size: 0.92rem; margin: 0; }
+
+/* Responsive: single column on small screens */
+@media (max-width: 700px) {
+    .team-grid { grid-template-columns: 1fr; gap: 14px; }
+    .team-photo-wrap { border-radius: 8px; }
+}
+
+/* Responsive tweaks: make the layout behave sanely on small screens */
+@media (max-width: 900px) {
+    /* Header / nav */
+    header { padding: 8px 12px; }
+    header .logo img { height: 52px; }
+    header nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+    header nav a { padding: 8px 10px; font-size: 0.95rem; }
+
+    /* Hero */
+    .hero { height: 60vh; padding: 32px 12px; }
+    .hero-text .duke-poker,
+    .hero-text .club { font-size: 3.2rem; line-height: 1; }
+    .hero-text .welcome { font-size: 1.6rem; }
+    .hero-logo { width: 92px; margin-top: 8px; }
+
+    /* Announcement card / modal */
+    .announcement-image { width: 110px; margin-right: 12px; }
+    .modal-content { max-width: 92%; padding: 16px; }
+
+    /* Sponsors page: stack rows vertically for more real estate */
+    .sponsor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 18px 12px;
+    }
+    .sponsor-logo { flex: 0 0 auto; margin-bottom: 12px; }
+    .sponsor-logo img { max-width: 140px; max-height: 90px; }
+    .sponsor-content { width: 100%; }
+    .sponsor-name { font-size: 1.25rem; }
+    .sponsor-description { font-size: 0.98rem; }
+
+    /* Sponsor logo strip */
+    .logo-grid { gap: 12px; }
+    .logo-item { flex: 0 0 100px; padding: 6px; }
+    .logo-item img { max-width: 90px; max-height: 48px; }
+
+    /* Gallery: two columns */
+    .gallery-image { width: calc(50% - 10px); }
+    .gallery-images { gap: 10px; }
+
+    /* Container spacing so disclaimer doesn't hide content */
+    .container, main { padding-bottom: 130px; }
+    .team-grid { grid-template-columns: 1fr; gap: 14px; }
+    .team-photo-wrap { border-radius: 8px; }
+}
+
+@media (max-width: 480px) {
+    header .logo img { height: 44px; }
+    header nav a { font-size: 0.88rem; padding: 6px 8px; }
+    .hero { height: 48vh; padding: 22px 10px; }
+    .hero-text .duke-poker,
+    .hero-text .club { font-size: 2.4rem; }
+    .hero-text .welcome { font-size: 1.4rem; }
+
+    .gallery-image { width: 100%; }
+    .announcement-image { width: 90px; }
+
+    .logo-item { flex: 0 0 84px; padding: 4px; }
+    .logo-item img { max-width: 72px; max-height: 44px; }
+
+    /* Make disclaimer padding slightly larger on very small screens */
+    .disclaimer-bar { padding: 18px 12px; font-size: 0.85rem; }
 }
 

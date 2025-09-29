@@ -16,22 +16,74 @@
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('team') }}" class="active">Team</a>
             <a href="{{ url_for('announcements') }}">Announcements</a>
-            <!--<a href="{{ url_for('sponsors') }}">Sponsors</a>
-            <a href="{{ url_for('gallery') }}">Gallery</a>-->
+            <a href="{{ url_for('sponsors') }}">Sponsors</a>
+            <a href="{{ url_for('gallery') }}">Gallery</a>
             <a href="{{ url_for('join') }}">Join Us</a>
         </nav>
+
+        {% if announcements and announcements|length > 0 %}
+        <button id="announcement-btn" class="announcement-button">Latest Announcement</button>
+
+        {% set a = announcements[0] %}
+        <div id="announcement-modal" class="modal" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+                <h2>{{ a.title }}</h2>
+                <p><strong>Date:</strong> {{ a.date }}</p>
+                <p>{{ a.description }}</p>
+                {% if a.link %}
+                <p><a href="{{ a.link }}" target="_blank" rel="noopener noreferrer">Sign up / RSVP here</a></p>
+                {% endif %}
+                {% if a.image %}
+                <img src="{{ url_for('static', filename=a.image.replace('static/', '')) }}" alt="{{ a.title }}" style="max-width:100%; margin-top:12px;">
+                {% endif %}
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% endif %}
     </header>
 
-    <section>
-        <h2>The Team</h2>
-        <p>Learn more about our mission, history, and what makes us the best poker club at Duke University.</p>
-    </section>
+    <main class="team-page container" style="padding:36px 20px;">
+        <h1>Meet the Team</h1>
+        <p class="lead" style="color:#ddd; max-width:900px;">
+            Our officers organize events, teach game strategy, and run tournaments. We're a small group of students passionate about poker and community — reach out if you want to help or join an event.
+        </p>
+
+        {% if team_members and team_members|length > 0 %}
+        <section class="team-grid" aria-label="Team members">
+            {% for member in team_members %}
+            <article class="team-card">
+                <div class="team-photo-wrap">
+                    {% if member.image %}
+                    <img class="team-photo" src="{{ url_for('static', filename=member.image) }}" alt="{{ member.name }}">
+                    {% else %}
+                    <div class="team-photo team-photo--placeholder" aria-hidden="true">{{ (member.name.split()|map('first')|join(''))[:2] }}</div>
+                    {% endif %}
+                </div>
+                <h3 class="team-name">{{ member.name }}</h3>
+                {% if member.role %}
+                <p class="team-role">{{ member.role }}</p>
+                {% endif %}
+                {% if member.bio %}
+                <p class="team-bio">{{ member.bio }}</p>
+                {% endif %}
+            </article>
+            {% endfor %}
+        </section>
+        {% else %}
+        <section class="coming-soon" style="padding:40px 12px; color:#ddd;">
+            <h2>No team listed yet</h2>
+            <p>We're still gathering headshots and bios. To add a member, put an image in static/images/ and pass a <code>team_members</code> list to the template from app.py.</p>
+        </section>
+        {% endif %}
+    </main>
 
     <!-- Disclaimer Bar -->
     <div class="disclaimer-bar">
-        <p> DISCLAIMER<p/>
-        <p>The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited</p>
-        <p>&copy; 2025 Duke Poker Club </p>
+        <p>DISCLAIMER</p>
+        <p>The Duke Poker Club does not support any form of gambling on campus.</p>
+        <p>&copy; 2025 Duke Poker Club</p>
     </div>
 </body>
 </html>

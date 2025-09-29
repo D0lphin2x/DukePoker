@@ -2,13 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponsors - Duke Poker Club</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
+<body style="background-color:#000; color:#fff;">
     <header>
         <div class="logo">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo">
@@ -21,27 +20,63 @@
             <a href="{{ url_for('gallery') }}">Gallery</a>
             <a href="{{ url_for('join') }}">Join Us</a>
         </nav>
+
+        {% if announcements and announcements|length > 0 %}
+        <button id="announcement-btn" class="announcement-button">Latest Announcement</button>
+
+        {% set a = announcements[0] %}
+        <div id="announcement-modal" class="modal" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+                <h2>{{ a.title }}</h2>
+                <p><strong>Date:</strong> {{ a.date }}</p>
+                <p>{{ a.description }}</p>
+                {% if a.link %}
+                <p><a href="{{ a.link }}" target="_blank" rel="noopener noreferrer">Sign up / RSVP here</a></p>
+                {% endif %}
+                {% if a.image %}
+                <img src="{{ url_for('static', filename=a.image.replace('static/', '')) }}" alt="{{ a.title }}" style="max-width:100%; margin-top:12px;">
+                {% endif %}
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% endif %}
     </header>
 
+    <!-- Updated sponsors main layout (no white block, announcement-style separators, bigger real-estate) -->
     <main class="sponsors-page">
-        <h1>Our Sponsors</h1>
-        <section class="sponsors-list">
-            {% for sponsor in sponsors %}
-            <article class="sponsor">
-                <div class="sponsor-header">
-                    <h2 class="sponsor-name">{{ sponsor.name }}</h2>
-                    <img src="{{ sponsor.logo }}" alt="{{ sponsor.name }} Logo" class="sponsor-logo">
-                </div>
-                <p class="sponsor-description">{{ sponsor.description }}</p>
-            </article>
-            <hr class="sponsor-divider">
-            {% endfor %}
-        </section>
+        <div class="container">
+            <h1 class="page-title">Our Sponsors</h1>
+
+            {% if sponsors and sponsors|length > 0 %}
+            <section class="sponsors-list">
+                {% for s in sponsors %}
+                <article class="sponsor">
+                    {% if s.logo %}
+                    <div class="sponsor-logo">
+                        <img src="{{ url_for('static', filename=s.logo) }}" alt="{{ s.name }} Logo">
+                    </div>
+                    {% endif %}
+                    <div class="sponsor-content">
+                        <h2 class="sponsor-name">{{ s.name }}</h2>
+                        <p class="sponsor-description">{{ s.description }}</p>
+                    </div>
+                </article>
+                {% endfor %}
+            </section>
+            {% else %}
+            <section class="coming-soon">
+                <h2>Coming Soon</h2>
+                <p>We're updating our sponsors. Add logos to <code>static/images/</code> and entries in <code>app.py</code>.</p>
+            </section>
+            {% endif %}
+        </div>
     </main>
 
     <div class="disclaimer-bar">
-        <p>DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus. Any form of gambling or cash game is prohibited.</p>
-        <p>&copy; 2025 Duke Poker Club</p>
+        <p style="margin:6px 0;">DISCLAIMER: The Duke Poker Club does not support any form of gambling on campus.</p>
+        <p style="margin:6px 0;">&copy; 2025 Duke Poker Club</p>
     </div>
 </body>
 </html>
