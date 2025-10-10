@@ -259,6 +259,43 @@ header nav a.active {
 
 /* Modal styles */
 .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.modal {
     position: fixed;
     inset: 0;
     display: none;
@@ -310,44 +347,41 @@ header nav a.active {
 
 /* Gallery Page Styling */
 .gallery-page {
-    padding: 40px 20px;
-    background-color: black; /* Continuous black background */
-    color: white; /* White text for readability */
-    text-align: center;
+    padding: 36px 20px;
+    color: #fff;
 }
 
 .gallery-list {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .gallery-event {
     margin-bottom: 40px;
-    text-align: left;
 }
 
 .gallery-event h2 {
     font-size: 1.8rem;
     margin-bottom: 20px;
-    color: white; /* Ensure headers are white */
+    color: white;
 }
 
 .gallery-images {
     display: flex;
-    flex-wrap: wrap; /* Allow images to wrap to the next line */
-    gap: 15px; /* Add spacing between images */
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .gallery-image {
-    width: 160px; /* was 200px */
+    width: 160px;
     height: auto;
-    border-radius: 5px; /* Optional: Add rounded corners */
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Optional: Add a subtle shadow */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
 }
 
 .gallery-divider {
     border: 0;
     height: 1px;
-    background: white; /* White line to separate events */
+    background: white;
     margin: 40px 0;
 }
 

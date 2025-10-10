@@ -52,7 +52,7 @@
                 <h2>{{ event.title }}</h2>
                 <div class="gallery-images">
                     {% for image in event.images %}
-                    <img src="{{ image }}" alt="{{ event.title }}" class="gallery-image">
+                    <img src="{{ url_for('static', filename=image) }}" alt="{{ event.title }}" class="gallery-image" onclick="openModal('{{ url_for('static', filename=image) }}')">
                     {% endfor %}
                 </div>
             </article>
@@ -61,5 +61,12 @@
         </section>
     </main>
 
+    <!-- Modal for enlarged image -->
+    <div id="image-modal" class="modal" onclick="closeModal()">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <img id="modal-image" class="modal-content" alt="Enlarged Image">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
 </body>
 </html>

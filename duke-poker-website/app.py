@@ -33,7 +33,8 @@ def team():
         {"name": "Andrew Park", "role": "Co-President", "image": "images/andrewpark.png", "bio": "Major: Math & Computer Science 2028 Interests: Piano, College Football, Strategy games"},
         {"name": "Jason Chen", "role": "Co-President", "image": "images/jasonchen.png", "bio": "Major: Economics Interests: Options Trading, Brawl Stars, Ginger and Soy"},
         {"name": "Jason Dong", "role": "Secretary", "image": "images/jasondong.png", "bio": "Major: Economics & Statistics Interests: Soccer, Tennis, EDM, Lifting"},
-        {"name": "Grace Kim", "role": "Treasurer", "image": "images/gracekim.png", "bio": "Econ & Poli Sci Interests: Guitar, Making music, Running"},
+        {"name": "Grace Kim", "role": "Treasurer", "image": "images/gracekim.png", "bio": "Major: Economics & Political Science Interests: Guitar, Making Music, Running"},
+        {"name": "Jay Shin", "role": "Publicity & Outreach", "image": "images/jayshin.png", "bio": "Major: Statistics & Economics Interests: Volleyball, Languages"},
         {"name": "William He", "role": "Tech Director", "image": "images/slowpoke.png", "bio": "Major: Music & Cultural Anthropology Interest: Food"},
     ]
     return render_template('team.html', announcements=ANNOUNCEMENTS, team_members=team_members)
@@ -59,8 +60,12 @@ def sponsors():
 
 @app.route('/gallery')
 def gallery():
-    # Change dictionary as required for photos and titles
+    # Example gallery events with images (place images in static/images/)
     gallery_events = [
+        {
+            "title": "First Poker Night",
+            "images": ["images/firstpoker5.png","images/firstpoker1.png", "images/firstpoker2.png","images/firstpoker3.png","images/firstpoker4.png",],
+        },
     ]
     return render_template('gallery.html', gallery_events=gallery_events, announcements=ANNOUNCEMENTS)
 
