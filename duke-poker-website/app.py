@@ -5,6 +5,13 @@ app = Flask(__name__)
 # Move announcement data to a top-level variable so it can be reused on the index page
 ANNOUNCEMENTS = [
     {
+        "title": "Poker X Lambdas",
+        "date": "November 7, 2025: 7 PM - 10 PM",
+        "description": "Join us in our collab wtih Duke Lambdas at Wilkinson 126! $20 buy ins, rebuys allowed until first break, come and have fun!",
+        "image": "static/images/dukelambdas.png",  # Example image path
+        "link": "https://docs.google.com/forms/d/e/1FAIpQLSdtd8viMQl1OMKYHWBUd6KOTNrDqJlNScn5OZNCCiOc5y9QiA/viewform"
+    },
+    {
         "title": "First Poker Night",
         "date": "October 3, 2025: 7 PM - 11 PM",
         "description": "Join us for the first poker event of the year! Students of all experience levels can join.",
@@ -35,6 +42,7 @@ def team():
         {"name": "Jason Dong", "role": "Secretary", "image": "images/jasondong.png", "bio": "Major: Economics & Statistics Interests: Soccer, Tennis, EDM, Lifting"},
         {"name": "Grace Kim", "role": "Treasurer", "image": "images/gracekim.png", "bio": "Major: Economics & Political Science Interests: Guitar, Making Music, Running"},
         {"name": "Jay Shin", "role": "Publicity & Outreach", "image": "images/jayshin.png", "bio": "Major: Statistics & Economics Interests: Volleyball, Languages"},
+        {"name": "David Kim", "role": "Event Organizer", "image": "images/davidkim.png", "bio": "Major: Chemistry Interests: Singing, Fishing, Sleeping"},
         {"name": "William He", "role": "Tech Director", "image": "images/slowpoke.png", "bio": "Major: Music & Cultural Anthropology Interest: Food"},
     ]
     return render_template('team.html', announcements=ANNOUNCEMENTS, team_members=team_members)
