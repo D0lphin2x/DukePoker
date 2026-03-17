@@ -5,6 +5,13 @@ app = Flask(__name__)
 # Move announcement data to a top-level variable so it can be reused on the index page
 ANNOUNCEMENTS = [
     {
+        "title": "Spring Poker and BOBA",
+        "date": "October 20, 2025: 7 PM - 11 PM",
+        "description": "Join us for the first Poker Event after Spring break! $10 buy ins, and BOBA for all participants!",
+        "image": "static/images/boba.jpeg",  # Example image path
+        "link": ""
+    },
+    {
         "title": "Poker X Lambdas",
         "date": "November 7, 2025: 7 PM - 10 PM",
         "description": "Join us in our collab wtih Duke Lambdas at Wilkinson 126! $20 buy ins, rebuys allowed until first break, come and have fun!",
