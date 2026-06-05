@@ -1,0 +1,20 @@
+{
+  "title": "Codex Local Monitor",
+  "updated": "2026-06-04 00:00:00 America/Chicago",
+  "lead": {
+    "name": "Manager",
+    "status": "online",
+    "current_task": "Local monitor server installed"
+  },
+  "agents": [],
+  "activity": [
+    {
+      "time": "2026-06-04 00:00:00 America/Chicago",
+      "message": "Monitor initialized at http://127.0.0.1:8765."
+    }
+  ],
+  "notes": [
+    "Keep this server running while you want the monitor available.",
+    "This is local-only and binds to 127.0.0.1 by default."
+  ]
+}
