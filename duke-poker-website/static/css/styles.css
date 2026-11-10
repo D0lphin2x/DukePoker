@@ -1,0 +1,681 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00009c;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    height: 65px;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #f39c12;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    background: url('../images/hero.jpg') no-repeat center center/cover;
+    text-align: center;
+    position: relative;
+}
+
+.hero-text {
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+
+.hero-text .welcome {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+.hero-text .duke-poker {
+    font-size: 5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.hero-text .club {
+    font-size: 5rem;
+    margin: 0;
+    font-weight: bold;
+    color: white;
+}
+
+.hero-logo {
+    width: 120px;
+    margin-top: 10px;
+    max-width: 120px; /* reduce hero logo size on desktop */
+}
+
+/* Section Styling */
+section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #000000;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Disclaimer Bar */
+.disclaimer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.5px 0;
+    font-size: 0.9rem;
+    z-index: 1000;
+}
+
+/* Ensure the body and html take up the full height */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: black;
+    color: white;
+    height: 100%; /* Full height for the body and html */
+    display: flex;
+    flex-direction: column; /* Flexbox layout for vertical alignment */
+}
+
+/* Main content should take up available space */
+main {
+    flex: 1; /* Pushes the footer to the bottom */
+    padding-bottom: 110px; /* >= disclaimer height; adjust if you change disclaimer padding */
+}
+
+/* Disclaimer Bar */
+.disclaimer-bar {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 0.8rem;
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.95);
+    color: #ccc;
+    padding: 14px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    z-index: 1200; /* above content but below modals */
+}
+
+/* Default link styling */
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+header nav a:hover {
+    color: #f39c12;
+}
+
+/* Active tab styling */
+header nav a.active {
+    background-color: #1a1a1a; /* Slightly darkened background */
+    color: #ffffff; /* Highlighted text color */
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.5); /* Imprinted effect */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+/* Join Page Styling */
+.join-page {
+    background-color: white; /* Set the background color to white */
+    color: black; /* Ensure all text inside the page is black */
+    padding: 40px 20px;
+    text-align: center;
+    min-height: calc(100vh - 50px); /* Ensure it fills the viewport minus the disclaimer bar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better contrast */
+}
+
+/* Join Page Section Styling */
+.join-section {
+    background-color: transparent; /* Remove any background color */
+    color: black; /* Ensure text is black */
+    margin: 40px 0; /* Add spacing between sections */
+    padding: 0; /* Remove unnecessary padding */
+    text-align: left; /* Align text to the left */
+}
+
+.join-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black; /* Ensure headers are black */
+}
+
+.join-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: black; /* Ensure paragraph text is black */
+}
+
+/* Announcements Page Styling */
+.announcements-page {
+    padding: 40px 20px;
+    background-color: black; /* Continuous black background */
+    color: white; /* White text for readability */
+    text-align: center;
+}
+
+.announcements-list {
+    margin-top: 20px;
+}
+
+.announcement {
+    display: flex; /* Use flexbox for layout */
+    align-items: flex-start; /* Align content at the top */
+    margin-bottom: 20px; /* Add spacing between announcements */
+    padding-bottom: 20px; /* Add padding at the bottom */
+    border-bottom: 1px solid white; /* White line to separate announcements */
+    text-align: left;
+    color: white; /* Ensure all text inside announcements is white */
+}
+
+.announcement-image {
+    width: 150px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Add spacing between the image and content */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.announcement-content {
+    flex: 1; /* Allow the content to take up remaining space */
+}
+
+.announcement h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: white; /* Ensure headers are white */
+}
+
+.announcement p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: white; /* Ensure paragraph text is white */
+}
+
+/* Announcement button */
+.announcement-button {
+    background: #f39c12;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 12px;
+    align-self: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Black background with opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: #111;
+    color: #fff;
+    max-width: 720px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+    text-align: left;
+}
+
+.modal-content img {
+    max-width: 520px;
+    width: 100%;
+    height: auto;
+}
+
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Ensure modal links are noticeable */
+.modal-content a {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+/* Gallery Page Styling */
+.gallery-page {
+    padding: 36px 20px;
+    color: #fff;
+}
+
+.gallery-list {
+    margin-top: 24px;
+}
+
+.gallery-event {
+    margin-bottom: 40px;
+}
+
+.gallery-event h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gallery-image {
+    width: 160px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+.gallery-divider {
+    border: 0;
+    height: 1px;
+    background: white;
+    margin: 40px 0;
+}
+
+/* Sponsors Page Styling */
+.sponsors-page {
+    padding: 48px 0;
+    background-color: black; /* match site background */
+    color: white;
+    text-align: left;
+    padding-bottom: 110px; /* >= disclaimer height; adjust if you change disclaimer padding */
+}
+
+.sponsors-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sponsor {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06); /* announcement-style separator */
+    background: transparent; /* ensure no white block */
+}
+
+.sponsor-logo {
+    flex: 0 0 180px; /* larger real-estate for logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sponsor-logo img {
+    max-width: 120px; /* previously larger */
+    max-height: 90px;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.sponsor-content {
+    flex: 1;
+}
+.sponsor-name {
+    margin: 0 0 6px;
+    color: #fff;
+    font-size: 1.4rem;
+}
+.sponsor-description {
+    margin: 0;
+    color: #ddd;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+/* Sponsor logo strip (index + sponsors page) */
+.sponsor-logos {
+    margin-top: 22px;
+    padding: 18px 0 6px;
+}
+.logo-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.logo-item {
+    flex: 0 0 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: transparent; /* keep black theme */
+    border-radius: 8px;
+}
+.logo-item img {
+    max-width: 90px;
+    max-height: 48px;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    opacity: 0.95;
+}
+
+/* Coming soon section */
+.coming-soon {
+    padding: 40px 20px;
+    color: #ddd;
+    text-align: center;
+}
+
+/* Container used on pages that need wider real-estate */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    padding-bottom: 110px; /* >= disclaimer height; adjust if you change disclaimer padding */
+}
+
+/* Team page */
+.team-page {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 48px 24px 80px;
+}
+.team-page h1 { margin: 0 0 16px; font-size: clamp(2rem, 5vw, 3.25rem); }
+.team-intro { max-width: 760px; color: #bdc6d8; line-height: 1.75; margin: 0; }
+.team-group-photo {
+    margin: 32px 0 40px;
+    overflow: hidden;
+    background: transparent;
+}
+.team-group-photo > img { display: block; width: 100%; height: auto; }
+.team-group-photo figcaption { padding: 16px 22px; color: #bdc6d8; font-size: .9rem; }
+.team-group-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    background: #0d1422;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    text-align: left;
+}
+.team-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: transparent;
+}
+.team-photo-wrap { aspect-ratio: 1; overflow: hidden; background: rgba(255,255,255,0.02); }
+.team-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-photo--placeholder { display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #bdc6d8; }
+.team-card-content { display: flex; flex-direction: column; flex: 1; align-items: flex-start; padding: 14px 0 0; }
+.team-card .team-name { margin: 0 0 8px; font-size: 1.35rem; color: #fff; }
+.team-card .team-role { margin: 0 0 16px; font-size: .85rem; color: #9fc2ff; font-weight: 600; }
+.team-card .team-bio { margin: 0 0 24px; font-size: .95rem; color: #bdc6d8; line-height: 1.7; }
+.team-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding: 0;
+    border: 0;
+    color: #fff;
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.team-linkedin:hover { color: #f39c12; }
+.team-linkedin:focus-visible { outline: 3px solid #9fc2ff; outline-offset: 4px; }
+.linkedin-icon { color: inherit; font-weight: 700; }
+@media (max-width: 1000px) {
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+    .team-page { padding: 32px 18px 60px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .team-group-placeholder { aspect-ratio: 2 / 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .team-card { transition: none; }
+}
+
+/* Responsive tweaks: make the layout behave sanely on small screens */
+@media (max-width: 900px) {
+    /* Header / nav */
+    header { padding: 8px 12px; }
+    header .logo img { height: 52px; }
+    header nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+    header nav a { padding: 8px 10px; font-size: 0.95rem; }
+
+    /* Hero */
+    .hero { height: 60vh; padding: 32px 12px; }
+    .hero-text .duke-poker,
+    .hero-text .club { font-size: 3.2rem; line-height: 1; }
+    .hero-text .welcome { font-size: 1.6rem; }
+    .hero-logo { width: 92px; margin-top: 8px; }
+
+    /* Announcement card / modal */
+    .announcement-image { width: 110px; margin-right: 12px; }
+    .modal-content { max-width: 92%; padding: 16px; }
+
+    /* Sponsors page: stack rows vertically for more real estate */
+    .sponsor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 18px 12px;
+    }
+    .sponsor-logo { flex: 0 0 auto; margin-bottom: 12px; }
+    .sponsor-logo img { max-width: 140px; max-height: 90px; }
+    .sponsor-content { width: 100%; }
+    .sponsor-name { font-size: 1.25rem; }
+    .sponsor-description { font-size: 0.98rem; }
+
+    /* Sponsor logo strip */
+    .logo-grid { gap: 12px; }
+    .logo-item { flex: 0 0 100px; padding: 6px; }
+    .logo-item img { max-width: 90px; max-height: 48px; }
+
+    /* Gallery: two columns */
+    .gallery-image { width: calc(50% - 10px); }
+    .gallery-images { gap: 10px; }
+
+    /* Container spacing so disclaimer doesn't hide content */
+    .container, main { padding-bottom: 130px; }
+}
+
+@media (max-width: 480px) {
+    header .logo img { height: 44px; }
+    header nav a { font-size: 0.88rem; padding: 6px 8px; }
+    .hero { height: 48vh; padding: 22px 10px; }
+    .hero-text .duke-poker,
+    .hero-text .club { font-size: 2.4rem; }
+    .hero-text .welcome { font-size: 1.4rem; }
+
+    .gallery-image { width: 100%; }
+    .announcement-image { width: 90px; }
+
+    .logo-item { flex: 0 0 84px; padding: 4px; }
+    .logo-item img { max-width: 72px; max-height: 44px; }
+
+    /* Make disclaimer padding slightly larger on very small screens */
+    .disclaimer-bar { padding: 18px 12px; font-size: 0.85rem; }
+}
+
+
+/* Announcement templates: blank photo areas stay ready for event artwork. */
+.announcements-list { max-width: 1100px; margin: 28px auto; padding: 0; background: transparent; }
+.announcements-intro { color: #bdc6d8; line-height: 1.6; }
+.announcements-list .announcement {
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: 0 0 24px;
+    background: transparent;
+    border-bottom: 1px solid white;
+}
+.announcement-photo-placeholder {
+    flex: 0 0 180px;
+    width: 180px;
+    aspect-ratio: 4 / 3;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(255,255,255,0.45);
+    box-sizing: border-box;
+}
+.announcements-list .announcement-image { width: 180px; margin: 0; }
+.announcements-list .announcement p { line-height: 1.7; color: #bdc6d8; }
+.announcements-list .announcement a { color: #9fc2ff; }
+.announcement-photo-placeholder--modal { width: 100%; aspect-ratio: 16 / 9; margin-top: 20px; }
+.latest-announcement-image { display: block; margin-top: 20px; }
+.modal-content { max-height: 85vh; overflow-y: auto; box-sizing: border-box; }
+@media (max-width: 600px) {
+    .announcements-list .announcement { flex-direction: column; padding: 18px; }
+    .announcements-list .announcement-image,
+    .announcement-photo-placeholder { width: 100%; flex-basis: auto; }
+}
+
+.announcements-archive {
+    border-top: 1px solid white;
+    text-align: left;
+    background: transparent;
+}
+.announcements-archive summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    color: #e3edff;
+    font-weight: 600;
+}
+.announcements-archive summary:hover { color: #f39c12; }
+.announcements-archive summary:focus-visible { outline: 3px solid #9fc2ff; outline-offset: 4px; }
+.archive-count { color: #bdc6d8; font-weight: 400; }
+.announcements-archive-content { padding: 0 16px 16px; }
+.announcements-archive-content .announcement:last-child { margin-bottom: 0; }
+
+.join-section .contact-email {
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
+}
+.join-section .contact-email:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}

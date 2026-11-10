@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Duke Poker Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo">
+        </div>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('team') }}" class="active">Team</a>
+            <a href="{{ url_for('announcements') }}">Announcements</a>
+            <a href="{{ url_for('sponsors') }}">Sponsors</a>
+            <a href="{{ url_for('gallery') }}">Gallery</a>
+            <a href="{{ url_for('join') }}">Join Us</a>
+        </nav>
+
+        {% if announcements and announcements|length > 0 %}
+        <button id="announcement-btn" class="announcement-button">Latest Announcement</button>
+
+        {% set a = announcements[0] %}
+        <div id="announcement-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="latest-announcement-title" aria-hidden="true">
+            <div class="modal-content">
+                <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+                {% include '_announcement_content.html' %}
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% endif %}
+    </header>
+
+    <main class="team-page container">
+        <h1>Meet the Team</h1>
+        <p class="team-intro">
+            Our officers organize events, teach game strategy, and run tournaments. We're a small group of students passionate about poker and community — reach out if you want to help or join an event.
+        </p>
+
+        <figure class="team-group-photo">
+            {% if team_photo %}
+            <img src="{{ url_for('static', filename=team_photo) }}" alt="Duke Poker Club team" fetchpriority="high">
+            {% else %}
+            <div class="team-group-placeholder" role="img" aria-label="Team photo placeholder"></div>
+            {% endif %}
+        </figure>
+
+        {% if team_members and team_members|length > 0 %}
+        <section class="team-grid" aria-label="Team members">
+            {% for member in team_members %}
+            <article class="team-card">
+                <div class="team-photo-wrap">
+                    {% if member.image %}
+                    <img class="team-photo" src="{{ url_for('static', filename=member.image) }}" alt="{{ member.name }}" loading="lazy">
+                    {% else %}
+                    <div class="team-photo team-photo--placeholder" aria-hidden="true">{{ (member.name.split()|map('first')|join(''))[:2] }}</div>
+                    {% endif %}
+                </div>
+                <div class="team-card-content">
+                <h2 class="team-name">{{ member.name }}</h2>
+                {% if member.role %}
+                <p class="team-role">{{ member.role }}</p>
+                {% endif %}
+                {% if member.bio %}
+                <p class="team-bio">{{ member.bio }}</p>
+                {% endif %}
+                {% if member.linkedin %}
+                <a class="team-linkedin" href="{{ member.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="{{ member.name }} on LinkedIn (opens in a new tab)">
+                    <span class="linkedin-icon" aria-hidden="true">in</span>
+                    LinkedIn <span aria-hidden="true">↗</span>
+                </a>
+                {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        {% else %}
+        <section class="coming-soon" style="padding:40px 12px; color:#ddd;">
+            <h2>No team listed yet</h2>
+            <p>We're still gathering headshots and bios. To add a member, put an image in static/images/ and pass a <code>team_members</code> list to the template from app.py.</p>
+        </section>
+        {% endif %}
+    </main>
+
+</body>
+</html>
+
+

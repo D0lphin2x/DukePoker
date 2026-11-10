@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duke Poker Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo">
+        </div>
+        <nav>
+            <a href="{{ url_for('home') }}"class="active">Home</a>
+            <a href="{{ url_for('team') }}">Team</a>
+            <a href="{{ url_for('announcements') }}">Announcements</a>
+            <a href="{{ url_for('sponsors') }}">Sponsors</a>
+            <a href="{{ url_for('gallery') }}">Gallery</a>
+            <a href="{{ url_for('join') }}">Join Us</a>
+        </nav>
+
+        {# Recent announcement button — shown only if ANNOUNCEMENTS passed from app.py #}
+        {% if announcements and announcements|length > 0 %}
+        <button id="announcement-btn" class="announcement-button">Latest Announcement</button>
+        {% endif %}
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="hero-text">
+                <p class="welcome">WELCOME TO THE</p>
+                <h1 class="duke-poker">
+                    <span class="duke">Duke</span> <span class="poker">Poker</span>
+                </h1>
+                <h1 class="club">Club</h1>
+            </div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Duke Poker Club Logo" class="hero-logo">
+        </div>
+
+        <!-- Opportunities Section -->
+        <section class="opportunities">
+            <h2>Opportunities</h2>
+            <p>Join us to learn poker strategies, participate in tournaments, and connect with fellow enthusiasts.</p>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="about-us">
+            <h2>About Us</h2>
+            <p>The Duke Poker Club is a community of poker enthusiasts at Duke University. We aim to foster a love for the game while promoting strategic thinking and camaraderie.</p>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section class="sponsors">
+            <h2>Our Sponsors</h2>
+            <p>We are proudly supported by our sponsors. Thank you for making our events possible!</p>
+
+            {# bottom logo strip — shows when `sponsors` is passed to the template #}
+            {% if sponsors and sponsors|length > 0 %}
+            <div class="sponsor-logos">
+                <div class="logo-grid">
+                    {% for s in sponsors %}
+                        {% if s.logo %}
+                        <div class="logo-item" title="{{ s.name }}">
+                            <img src="{{ url_for('static', filename=s.logo) }}" alt="{{ s.name }} logo">
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </main>
+
+    <!-- Disclaimer Bar -->
+    <div class="disclaimer-bar">
+        <p> DISCLAIMER</p>
+        <p>The Duke Poker Club does not support any form of gambling on campus.</p>
+        <p>&copy; 2026 Duke Poker Club </p>
+    </div>
+
+    {# Announcement modal (renders only if announcements exist) #}
+    {% if announcements and announcements|length > 0 %}
+    {% set a = announcements[0] %}
+    <div id="announcement-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="latest-announcement-title" aria-hidden="true">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close" aria-label="Close">×</button>
+            {% include '_announcement_content.html' %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endif %}
+</body>
+</html>

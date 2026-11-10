@@ -1,0 +1,15 @@
+<article class="announcement">
+                {% if announcement.image %}
+                <img src="{{ url_for('static', filename=announcement.image.replace('static/', '')) }}" alt="{{ announcement.title }}" class="announcement-image">
+                {% else %}
+                <div class="announcement-photo-placeholder" role="img" aria-label="Announcement photo placeholder"></div>
+                {% endif %}
+                <div class="announcement-content">
+                    <h2>{{ announcement.title }}</h2>
+                    <p><strong>Date:</strong> {{ announcement.date }}</p>
+                    <p>{{ announcement.description }}</p>
+                    {% if announcement.link %}
+                    <p><a href="{{ announcement.link }}" target="_blank" rel="noopener noreferrer">Sign up / RSVP here</a></p>
+                    {% endif %}
+                </div>
+            </article>

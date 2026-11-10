@@ -1,0 +1,11 @@
+<h2 id="latest-announcement-title">{{ a.title }}</h2>
+<p><strong>Date:</strong> {{ a.date }}</p>
+<p>{{ a.description }}</p>
+{% if a.image %}
+<img class="latest-announcement-image" src="{{ url_for('static', filename=a.image.replace('static/', '')) }}" alt="{{ a.title }}">
+{% else %}
+<div class="announcement-photo-placeholder announcement-photo-placeholder--modal" role="img" aria-label="Announcement photo placeholder"></div>
+{% endif %}
+{% if a.link %}
+<p><a href="{{ a.link }}" target="_blank" rel="noopener noreferrer">Sign up / RSVP here</a></p>
+{% endif %}

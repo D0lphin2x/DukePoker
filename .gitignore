@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+.codex/
+.agents/
+.env
+.env.*
+!.env.example
+codex_monitor.py
+codex_status.json
+duke-poker-website/__pycache__/
+duke-poker-website/static/images/2nd Event /
+duke-poker-website/static/images/3rd event/
+duke-poker-website/static/images/poker x lambdas/
+/

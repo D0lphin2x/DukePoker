@@ -1,0 +1,19 @@
+services:
+  - type: web
+    runtime: python
+    name: duke-poker
+    rootDir: duke-poker-website
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+    plan: free
+    domains:
+      - www.dukepoker.org
+    envVars:
+      - key: ALLOWED_HOSTS
+        value: www.dukepoker.org,dukepoker.org
+      - key: FLASK_COOKIE_SECURE
+        value: "true"
+      - key: FORCE_HSTS
+        value: "true"
+      - key: TRUSTED_PROXY_HOPS
+        value: "1"
