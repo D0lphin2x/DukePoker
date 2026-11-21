@@ -258,12 +258,16 @@ def main() -> int:
     events = read_events()
     existing = {str(event.get("instagram_id", "")) for event in events}
     additions: list[dict] = []
+    marked_event_seen = False
     for item in reversed(media):
         caption = item.get("caption", "")
         if not isinstance(caption, str):
             continue
         event = parse_event(caption, item)
-        if event is None or event["instagram_id"] in existing:
+        if event is None:
+            continue
+        marked_event_seen = True
+        if event["instagram_id"] in existing:
             continue
         event["image"] = download_event_image(item, event["instagram_id"])
         additions.append(event)
@@ -273,7 +277,11 @@ def main() -> int:
     if additions:
         EVENTS_FILE.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    next_state = {"media_id": str(newest["id"]), "timestamp": newest.get("timestamp", "")} if newest.get("id") else state
+    next_state = (
+        {"media_id": str(newest["id"]), "timestamp": newest.get("timestamp", "")}
+        if newest.get("id") and marked_event_seen
+        else state
+    )
     state_updated = next_state != state
     if state_updated:
         STATE_FILE.write_text(json.dumps(next_state, indent=2) + "\n", encoding="utf-8")
