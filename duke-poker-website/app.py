@@ -1,4 +1,5 @@
 import os
+import json
 import time
 from collections import defaultdict, deque
 
@@ -182,6 +183,20 @@ ANNOUNCEMENTS = [
         "link": "https://docs.google.com/forms/d/e/1FAIpQLSeT9wWF3pjq6ej19edwfZyiIGXpWfx7WK1l0OZmq6R23cxgVw/viewform"
     },
 ]
+
+def load_instagram_announcements():
+    """Load event posts synced by the GitHub Actions Instagram watcher."""
+    event_file = os.path.join(os.path.dirname(__file__), "instagram_events.json")
+    try:
+        with open(event_file, encoding="utf-8") as file:
+            events = json.load(file)
+    except (OSError, json.JSONDecodeError):
+        return []
+    return events if isinstance(events, list) else []
+
+
+# Automatically synced events appear before the manually curated archive.
+ANNOUNCEMENTS = load_instagram_announcements() + ANNOUNCEMENTS
 
 @app.route('/')
 def home():
